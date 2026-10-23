@@ -1,0 +1,49 @@
+{% extends 'layout.html' %} {% block title %}Subscribe to Newsletter{% endblock
+%} {% block content %}
+<div class="form-container">
+  <h1>📬 Subscribe to Our Newsletter</h1>
+
+  {% if is_done %}
+  <!-- Success message (shown after submission) -->
+  <div class="success-message">
+    <h2>✅ Thank You for Subscribing!</h2>
+    <p>We've received your subscription. You'll hear from us soon!</p>
+    <a href="/" class="btn-home">← Back to Home</a>
+  </div>
+  {% else %}
+  <!-- Form (shown on initial visit) -->
+  <form method="POST" action="/add.html" class="contact-form">
+    <div class="form-group">
+      <label for="name">Your Name:</label>
+      <input
+        type="text"
+        id="name"
+        name="name"
+        required
+        minlength="2"
+        maxlength="100"
+        placeholder="Enter your full name"
+        autocomplete="name"
+      />
+      <span class="form-hint">Required • 2-100 characters</span>
+    </div>
+
+    <div class="form-group">
+      <label for="email">Email Address:</label>
+      <input
+        type="email"
+        id="email"
+        name="email"
+        required
+        pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        placeholder="your.email@example.com"
+        autocomplete="email"
+      />
+      <span class="form-hint">Required • Must be a valid email</span>
+    </div>
+
+    <button type="submit" class="btn-submit">Subscribe</button>
+  </form>
+  {% endif %}
+</div>
+{% endblock %}
