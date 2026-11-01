@@ -22,7 +22,12 @@ def insertContact(email, name):
     Raises:
         sqlite3.IntegrityError: If email already exists (UNIQUE constraint)
     """
-    with sql.connect("database/data_source.db") as con:
-        cur = con.cursor()
-        cur.execute("INSERT INTO contact_list (email,name) VALUES (?,?)", (email, name))
-        con.commit()
+    try:
+        with sql.connect("database/data_source.db") as con:
+            cur = con.cursor()
+            cur.execute(
+                "INSERT INTO contact_list (email,name) VALUES (?,?)", (email, name)
+            )
+            con.commit()
+    except sql.Error as e:
+        raise RuntimeError(f"Database error: {e}")
