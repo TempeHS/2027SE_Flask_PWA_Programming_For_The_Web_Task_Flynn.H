@@ -1,4 +1,11 @@
 {% extends 'layout.html' %} {% block content %}
+<div class="filter-buttons">
+  <a href="/" class="filter-btn">All</a>
+  <a href="/?language=HTML CSS JS" class="filter-btn">HTML CSS JS</a>
+  <a href="/?language=%23BASH" class="filter-btn">#BASH</a>
+  <a href="/?language=SQL" class="filter-btn">SQL</a>
+</div>
+
 <div class="container">
   {% for row in content %}
   <div class="card">
@@ -9,7 +16,9 @@
     />
     <h1 class="card-name">{{ row[1] }}</h1>
     <p class="card-about">{{ row[3] }}</p>
-    <a class="btn" href="{{ row[2] }}">Read More</a>
+    <a class="card-link" href="{{ row[2] }}"
+      ><button class="btn">Read More</button></a
+    >
   </div>
   {% endfor %}
 </div>

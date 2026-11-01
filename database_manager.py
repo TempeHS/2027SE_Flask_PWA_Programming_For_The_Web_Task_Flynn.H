@@ -31,3 +31,12 @@ def insertContact(email, name):
             con.commit()
     except sql.Error as e:
         raise RuntimeError(f"Database error: {e}")
+
+
+def listExtensionByLanguage(language):
+    with sql.connect("database/data_source.db") as con:
+        cur = con.cursor()
+        data = cur.execute(
+            "SELECT * FROM extension WHERE language = ?", (language,)
+        ).fetchall()
+        return data
