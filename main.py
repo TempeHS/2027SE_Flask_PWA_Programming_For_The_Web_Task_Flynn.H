@@ -2,7 +2,7 @@ from flask import Flask
 from flask import render_template
 from flask import request
 import database_manager as dbHandler
-
+import sqlite3
 app = Flask(__name__)
 
 
@@ -25,12 +25,19 @@ def add():
         # Form was submitted - extract data
         email = request.form["email"]
         name = request.form["name"]
+        try:
+            # Insert into database
+            dbHandler.insertContact(email, name)
 
-        # Insert into database
-        dbHandler.insertContact(email, name)
+            # Render template with success message
+            return render_template("/add.html", is_done=True)
 
-        # Render template with success message
-        return render_template("/add.html", is_done=True)
+        except sqlite3.IntegrityError:
+            # Duplicate email - show error message
+            error_message = "This email address is already subscribed. Please use a different email."
+            return render_template(
+                "/add.html", error=error_message, email=email, name=name
+            )
     else:
         # GET request - display empty form
         return render_template("/add.html")

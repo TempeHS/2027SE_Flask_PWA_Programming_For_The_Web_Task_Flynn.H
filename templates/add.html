@@ -4,14 +4,22 @@
   <h1>📬 Subscribe to Our Newsletter</h1>
 
   {% if is_done %}
-  <!-- Success message (shown after submission) -->
+  <!-- Success message (after successful submission) -->
   <div class="success-message">
     <h2>✅ Thank You for Subscribing!</h2>
     <p>We've received your subscription. You'll hear from us soon!</p>
     <a href="/" class="btn-home">← Back to Home</a>
   </div>
+
   {% else %}
-  <!-- Form (shown on initial visit) -->
+  <!-- Display error message if present -->
+  {% if error %}
+  <div class="error-message">
+    <p>⚠️ {{ error }}</p>
+  </div>
+  {% endif %}
+
+  <!-- Form (shown on initial visit or after error) -->
   <form method="POST" action="/add.html" class="contact-form">
     <div class="form-group">
       <label for="name">Your Name:</label>
@@ -22,6 +30,7 @@
         required
         minlength="2"
         maxlength="100"
+        value="{{ name or '' }}"
         placeholder="Enter your full name"
         autocomplete="name"
       />
@@ -36,6 +45,7 @@
         name="email"
         required
         pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+        value="{{ email or '' }}"
         placeholder="your.email@example.com"
         autocomplete="email"
       />

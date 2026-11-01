@@ -274,3 +274,50 @@ nav h1 {
     font-size: 1.5rem;
   }
 }
+
+/* ============================================
+   ERROR MESSAGE STYLES
+   ============================================ */
+
+.error-message {
+  background: #ffebee;
+  border-left: 4px solid #f44336;
+  padding: 1rem 1.5rem;
+  margin-bottom: 1.5rem;
+  border-radius: 6px;
+  animation: shake 0.5s ease-in-out;
+}
+
+.error-message p {
+  color: #c62828;
+  margin: 0;
+  font-weight: 500;
+  font-size: 1rem;
+}
+
+/* Shake animation for errors */
+@keyframes shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  10%,
+  30%,
+  50%,
+  70%,
+  90% {
+    transform: translateX(-5px);
+  }
+  20%,
+  40%,
+  60%,
+  80% {
+    transform: translateX(5px);
+  }
+}
+
+/* Error state for inputs (optional enhancement) */
+.form-group input.error {
+  border-color: #f44336;
+  background: #ffebee;
+}
