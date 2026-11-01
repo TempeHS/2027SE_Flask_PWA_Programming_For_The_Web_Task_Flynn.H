@@ -13,9 +13,13 @@
 
   <body>
     <div id="offline-banner" class="offline-banner" style="display: none">
-      <p>⚠️ You are currently offline. Showing cached content.</p>
+      <p>
+        ⚠️ You are currently offline. Showing cached content.
+        <button id="retry-connection" class="retry-btn">
+          Retry Connection
+        </button>
+      </p>
     </div>
-
     <main>
       {% include "partials/menu.html" %} {% block content %}{% endblock %}
     </main>

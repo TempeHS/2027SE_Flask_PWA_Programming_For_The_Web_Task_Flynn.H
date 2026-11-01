@@ -386,3 +386,46 @@ nav h1 {
     opacity: 1;
   }
 }
+
+.online-banner {
+  background: #4caf50;
+  color: #fff;
+  text-align: center;
+  padding: 0.75rem;
+  font-weight: 600;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1001;
+  animation: slideDown 0.3s ease-out;
+}
+
+.online-banner p {
+  margin: 0;
+  font-size: 0.95rem;
+}
+
+body.offline {
+  filter: grayscale(20%);
+}
+
+body.offline main {
+  opacity: 0.9;
+}
+
+.retry-btn {
+  background: #fff;
+  color: #ff9800;
+  border: none;
+  padding: 0.25rem 0.75rem;
+  margin-left: 0.5rem;
+  border-radius: 3px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.retry-btn:hover {
+  background: #f5f5f5;
+}
