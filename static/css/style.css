@@ -351,3 +351,8 @@ nav h1 {
   transform: translateY(0);
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
+
+.filter-btn.active {
+  background: hsl(177, 82%, 28%);
+  font-weight: 700;
+}
